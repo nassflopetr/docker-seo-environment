@@ -1,0 +1,20 @@
+#spinner .modal-content {
+    background-color: unset;
+    border: unset;
+}
+
+#spinner .spinner-border {
+    width: 4rem;
+    height: 4rem;
+}
+
+#alerts,
+#spinner.modal {
+    z-index: 2000 !important;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+}
