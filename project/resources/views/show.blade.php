@@ -44,11 +44,43 @@
                 </div>
             </section>
         </div>
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mb-4">
             <section class="border border-1 rounded-2 p-3">
                 <button id="make-order" class="btn btn-success">Оформити замовлення</button>
             </section>
         </div>
+        @if ($gallery->isNotEmpty())
+            <div class="col-12">
+                <section class="border border-1 rounded-2 p-3" id="carousel">
+                    <div id="carousel-indicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            @foreach ($gallery as $item)
+                                <button type="button" data-bs-target="#carousel-indicators"
+                                        data-bs-slide-to="{{ $loop->index }}" @if ($loop->first) class="active"
+                                        aria-current="true" @endif aria-label="{{ $item->alt }}"></button>
+                            @endforeach
+                        </div>
+                        <div class="carousel-inner">
+                            @foreach ($gallery as $item)
+                                <div class="carousel-item @if ($loop->first) active @endif">
+                                    <img src="{{ asset($item->src) }}" class="d-block w-100" alt="{{ $item->alt }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-indicators"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Попередня</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-indicators"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Наступна</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+        @endif
     </div>
 
     <div class="modal" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">

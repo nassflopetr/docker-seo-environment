@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ShowController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,18 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('about-us', [
-        'metadata' => [
-            'h1' => 'Театральний Портал',
-            'title' => 'Театральний Портал - Ваш вхід до світу неповторних вистав',
-            'description' => 'Ласкаво просимо на Театральний Портал - ваш вхід до світу захоплюючих вистав. Дізнайтеся про найновіші вистави, купуйте квитки та насолоджуйтеся неповторною атмосферою театру.',
-            'keywords' => 'театр, вистави, квитки, афіша, театральний портал',
-            'og:title' => 'Театральний Портал - Ваш вхід до світу неповторних вистав',
-            'og:description' => 'Ласкаво просимо на Театральний Портал - ваш вхід до світу захоплюючих вистав. Дізнайтеся про найновіші вистави, купуйте квитки та насолоджуйтеся неповторною атмосферою театру.',
-        ],
-    ]);
-})->name('/');
+Route::get('/', IndexController::class)->name('/');
 
 Route::get('/contacts', function () {
     return view('contacts', [

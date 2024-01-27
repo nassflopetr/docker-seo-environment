@@ -13,11 +13,13 @@ php artisan key:generate
 php artisan migrate --path=./database/migrations/2023_11_30_145143_create_halls_table.php \
     && php artisan migrate --path=./database/migrations/2023_11_30_145144_create_shows_table.php \
     && php artisan migrate --path=./database/migrations/2023_12_02_124645_create_orders_table.php \
-    && php artisan migrate --path=./database/migrations/2023_12_02_125343_create_order_hall_seats_table.php
+    && php artisan migrate --path=./database/migrations/2023_12_02_125343_create_order_hall_seats_table.php \
+    && php artisan migrate --path=./database/migrations/2024_01_27_105544_create_gallery_table.php
 ```
 
 ### 4. Запуск посіву даних (заповнення таблиць базовими даними).
 ```
 php artisan db:seed --class=HallSeeder \
-    && php artisan db:seed --class=ShowSeeder
+    && php artisan db:seed --class=ShowSeeder \
+    && php artisan db:seed --class=GallerySeeder
 ```

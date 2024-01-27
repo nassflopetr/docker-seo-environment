@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\Hall;
 use App\Models\Order;
 use App\Models\OrderHallSeat;
@@ -60,9 +61,11 @@ class ShowController extends Controller
         $metadata = $show->metadata;
         $hall = Hall::where('id', '=', $show->hall_id)->first();
         $occupiedSeats = OrderHallSeat::select('seat')->where('show_id', '=', $show->id)->get()->pluck('seat')->toArray();
+        $gallery = Gallery::where('show_id', '=', $show->id)->get();
 
         return view('show', [
             'show' => $show,
+            'gallery' => $gallery,
             'metadata' => $metadata,
             'hall' => $hall,
             'occupied_seats' => $occupiedSeats
